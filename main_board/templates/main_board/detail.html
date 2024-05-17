@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container rounded bg-light">
+        <div class="row post-inner">
+            {% if post.cover %}
+            <div class="col-sm-3">
+                <img src="{{post.cover.url}}" alt="" class="figure-img rounded">
+            </div>
+            {% endif %}
+            <div class="col">
+                <h2 class="fs-3">
+                    {{post.title}}
+                </h2>
+                <div class="fw-normal fs-6">Категория: 
+                    <span class="badge bg-primary text-wrap" style="width: 6rem;">{{ post.category }}</span></div>
+                <br>
+                <div class="news-body">
+                    {{post.body}}
+                </div>
+                <br><br>
+                <div class="news-meta fst-italic">
+                    <span class="news-created">{{post.created|date}}</span>
+                    Автор:
+                    <span class="news-author">{{post.author.first_name}} {{post.author.last_name}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

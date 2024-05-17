@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Добавить новость{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for item in form %}
+            <div class="row mb-2">
+                <div class="col-md-1">{{item.label}}</div>
+                <div class="col">{{item}}</div>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Добавить новость" class="btn btn-secondary mt-3">
+    </form>
+{% endblock %}
