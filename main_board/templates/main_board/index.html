@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% comment %} post.get_absolute_url {% endcomment %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+    <div class="row justify-content-center">
+        {% for post in posts %}
+                <a href="{{post.get_absolute_url}}" class="text-decoration-none text-black col-md-3 post rounded post-link">    
+                        <div class="post-inner">
+                            <h2 class="fs-6">{{ post.title }}</h2>
+                            <div class="post-title fw-normal fs-9">Категория: 
+                                <span class="badge bg-primary text-wrap" style="width: 6rem;">{{ post.category }}</span></div>
+                            <br>
+                            <div class="post-body row">
+                                {% if not post.cover %}
+                                    <div class="col">
+                                        {{post.body|truncatechars:350}}
+                                    </div>
+                                {% else %}
+                                    <div class="col">
+                                        <img src="{{post.cover.url}}" alt="" class="figure-img rounded">
+                                    </div>
+                                    <div class="col">
+                                        {{post.body|truncatechars:150}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>    
+                </a>
+        {% endfor %}
+    </div>
+{% endblock %}

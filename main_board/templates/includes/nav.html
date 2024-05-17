@@ -1,0 +1,13 @@
+{% load nav %}
+{% get_nav as cats %}
+
+<div class="row text-center justify-content-center nav">
+    {% for category in cats %}
+    <div class="col-sm-1 nav-item">
+        <a class="text-decoration-none text-white fw-light nav-link" href="{{ category.get_absolute_url }}">{{category.name}}</a>
+    </div>
+    {% endfor %}
+    <div class="col-sm-1 nav-item">
+        <a class="text-decoration-none text-white fw-light nav-link border-1" href="{% url 'news:add_news' %}">Добавить</a>
+    </div>
+</div>
